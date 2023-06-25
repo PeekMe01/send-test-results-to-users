@@ -92,6 +92,11 @@ app.post('/login', (req,res) => {
     });
 });
 
+// admin sending results part
+app.post('/sendresults', (req,res)=>{
+    
+});
+
 app.listen(8081, ()=> {
     console.log("listening");
 });
