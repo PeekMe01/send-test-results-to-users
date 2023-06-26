@@ -12,6 +12,7 @@ function App() {
   const [permission, setPermission] = useState();
   const [user, setUser] = useState({id: null,username: null,password: null,permission: null})
   const [noAcc, setNoAcc] = useState("");
+  const [serverResponse, setServerResponse] = useState('');
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -41,10 +42,16 @@ function App() {
       )
     // store the user in localStorage
     localStorage.setItem('user', JSON.stringify(response.data.data));
-    console.log(response.data.data);
+    console.log(response.data.message);
+    setServerResponse(response.data.message);
+    document.getElementById('serverResponseId').className = 'goodResponse';
+
     window.location.reload(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.error);
+      setServerResponse(error.response.data.error);
+      document.getElementById('serverResponseId').className = 'badResponse';
+
     }
     
     
@@ -70,8 +77,11 @@ function App() {
 
   // if there's no user, show the login form
   return (
+    <>
+    
     <div class="form__center">
       <form onSubmit={handleSubmit}>
+      <small id='serverResponseId'>{serverResponse}</small>
         <div>
           <strong><label htmlFor="username">Username: </label></strong>
           <input
@@ -96,6 +106,7 @@ function App() {
         <small>No account? Click <u className='underline' onClick={()=>setNoAcc('true')}>here</u>.</small>
       </form>
     </div>
+    </>
   );
 }
 
