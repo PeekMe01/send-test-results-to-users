@@ -87,7 +87,7 @@ app.post('/login', (req,res) => {
                 password,
                 permission
             };
-            res.json({ message: 'User logged in successfully!' });
+            res.json({ message: 'User logged in successfully!', data:userData });
         }
     });
 });
@@ -186,7 +186,7 @@ app.post('/getresults', (req,res) => {
             }
     
             if(results.length>0){
-                res.json({ message: 'result Received results ' , results});
+                res.json({ message: 'Received results ' , result: results});
             }
         });
     });
