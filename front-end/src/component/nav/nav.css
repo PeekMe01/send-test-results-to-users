@@ -1,0 +1,27 @@
+.nav__bar {
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    color: white;
+}
+
+.nav__bar h2:hover{
+    cursor:default;
+}
+
+.logout__button {
+    background-color: transparent;
+    color: white;
+    border: 1px white solid;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: 300ms;
+}
+
+.logout__button:hover{
+    background-color: white;
+    color: darkcyan;
+    cursor: pointer;
+}
